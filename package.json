@@ -1,0 +1,22 @@
+{
+  "name": "kafka-oauth-producer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@confluentinc/kafka-javascript": "^1.8.2",
+    "axios": "^1.13.6",
+    "dotenv": "^17.3.1",
+    "jose": "^6.2.2",
+    "jsonwebtoken": "^9.0.3",
+    "kafkajs": "^2.2.4",
+    "uuid": "^13.0.0"
+  }
+}
