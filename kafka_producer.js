@@ -1,6 +1,6 @@
 const { Kafka } = require('@confluentinc/kafka-javascript').KafkaJS;
 const { getAccessToken } = require('./token_generator.js');
-const { BOOTSTRAP_SERVERS, IDENTITY_POOL_ID, KAFKA_CLUSTER_ID,SCHEMA_REGISTRY_CLUSTER_ID} = require("./config.js");
+const { BOOTSTRAP_SERVERS, IDENTITY_POOL_ID, KAFKA_LOGICAL_CLUSTER_ID} = require("./config.js");
 // ── OAuthBearer Callback ──────────────────────────────────
 async function oauthTokenRefresh() {
   console.log('Refreshing OAuth token from Entra ID...');
@@ -14,7 +14,7 @@ async function oauthTokenRefresh() {
     lifetime:   Date.now() + response.expires_in * 1000,
     principal:  response.client_id,
     extensions: {
-      logicalCluster: KAFKA_CLUSTER_ID,
+      logicalCluster: KAFKA_LOGICAL_CLUSTER_ID,
       identityPoolId: IDENTITY_POOL_ID
     }
   };
@@ -25,7 +25,7 @@ const kafka = new Kafka({
   'bootstrap.servers':            BOOTSTRAP_SERVERS,
   'security.protocol':            'sasl_ssl',
   'sasl.mechanisms':              'OAUTHBEARER',
-  'sasl.oauthbearer.config':      `logicalCluster=${KAFKA_CLUSTER_ID},identityPoolId=${IDENTITY_POOL_ID}`,
+  'sasl.oauthbearer.config':      `logicalCluster=${KAFKA_LOGICAL_CLUSTER_ID},identityPoolId=${IDENTITY_POOL_ID}`,
   'oauthbearer_token_refresh_cb': oauthTokenRefresh,
 });
 

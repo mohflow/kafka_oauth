@@ -1,6 +1,6 @@
 ## install node libraries
 
-npm install @confluentinc/kafka-javascript jsonwebtoken uuid 
+npm install @confluentinc/kafka-javascript @confluentinc/schemaregistry jsonwebtoken uuid 
 
 ## Command to generate private key and self-signed certificate (you will be prompted to enter metadata like Country,state etc. for certificate)
 openssl req -x509 -newkey rsa:2048 \

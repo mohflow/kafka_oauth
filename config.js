@@ -6,7 +6,8 @@ module.exports = {
   SCOPE:            "api://a24fad48-59ee-4352-bfeb-c6307dec33a8/.default",
   BOOTSTRAP_SERVERS: "pkc-619z3.us-east1.gcp.confluent.cloud:9092",
   IDENTITY_POOL_ID : "pool-zEvly",
-  KAFKA_CLUSTER_ID: "lkc-zo0967",
-  SCHEMA_REGISTRY_CLUSTER_ID: "lsrc-3y9m7j",
-  SCHEMA_REGISTRY_ENDPOINT: "https://psrc-z27ovke.us-east1.gcp.confluent.cloud"
+  KAFKA_LOGICAL_CLUSTER_ID: "lkc-zo0967",
+  SR_LOGICAL_CLUSTER_ID: "lsrc-3y9m7j",
+  SCHEMA_REGISTRY_URL: "https://psrc-z27ovke.us-east1.gcp.confluent.cloud",
+  TOPIC_NAME: "test-topic-json-sr"
 };
