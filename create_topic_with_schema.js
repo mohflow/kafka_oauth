@@ -7,10 +7,10 @@ const {
   IDENTITY_POOL_ID,
   SCHEMA_REGISTRY_URL,
   SR_LOGICAL_CLUSTER_ID,
-  TOPIC_NAME,
+  TOPIC_WITH_SCHEMA,
 } = require('./config');
 
-const SUBJECT = `${TOPIC_NAME}-value`;
+const SUBJECT = `${TOPIC_WITH_SCHEMA}-value`;
 
 // ── Shared token cache ────────────────────────────────────
 let cachedToken    = null;
@@ -93,17 +93,17 @@ async function createTopic() {
 
   // Check if topic already exists
   const existingTopics = await admin.listTopics();
-  if (existingTopics.includes(TOPIC_NAME)) {
-    console.log(`⚠️  Topic "${TOPIC_NAME}" already exists — skipping creation`);
+  if (existingTopics.includes(TOPIC_WITH_SCHEMA)) {
+    console.log(`⚠️  Topic "${TOPIC_WITH_SCHEMA}" already exists — skipping creation`);
   } else {
     await admin.createTopics({
       topics: [{
-        topic:             TOPIC_NAME,
+        topic:             TOPIC_WITH_SCHEMA,
         numPartitions:     3,
         replicationFactor: 3,
       }],
     });
-    console.log(`✅ Topic "${TOPIC_NAME}" created | partitions: 3 | replication: 3`);
+    console.log(`✅ Topic "${TOPIC_WITH_SCHEMA}" created | partitions: 3 | replication: 3`);
   }
 
   await admin.disconnect();

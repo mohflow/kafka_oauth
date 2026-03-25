@@ -9,5 +9,6 @@ module.exports = {
   KAFKA_LOGICAL_CLUSTER_ID: "lkc-zo0967",
   SR_LOGICAL_CLUSTER_ID: "lsrc-3y9m7j",
   SCHEMA_REGISTRY_URL: "https://psrc-z27ovke.us-east1.gcp.confluent.cloud",
-  TOPIC_NAME: "test-topic-json-sr"
+  TOPIC_WITHOUT_SCHEMA: "test-topic",
+  TOPIC_WITH_SCHEMA: "test-topic-json-sr"
 };

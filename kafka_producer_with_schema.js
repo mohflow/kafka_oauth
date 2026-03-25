@@ -8,11 +8,11 @@ const {
   SCHEMA_REGISTRY_URL,
   SR_LOGICAL_CLUSTER_ID,
   CLIENT_ID,
-  TOPIC_NAME,
+  TOPIC_WITH_SCHEMA,
 } = require('./config');
 
 // ── TopicNameStrategy subject ─────────────────────────────
-const SUBJECT = `${TOPIC_NAME}-value`;
+const SUBJECT = `${TOPIC_WITH_SCHEMA}-value`;
 
 // ── Shared token cache ────────────────────────────────────
 let cachedToken    = null;
@@ -108,10 +108,10 @@ async function startProducer() {
         amount:    parseFloat((Math.random() * 1000).toFixed(2)),
       };
 
-      const encodedValue = await serializer.serialize(TOPIC_NAME, payload);
+      const encodedValue = await serializer.serialize(TOPIC_WITH_SCHEMA, payload);
 
       await producer.send({
-        topic:    TOPIC_NAME,
+        topic:    TOPIC_WITH_SCHEMA,
         messages: [{ key: `key-${messageCount}`, value: encodedValue }],
       });
 

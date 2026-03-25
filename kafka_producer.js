@@ -1,6 +1,6 @@
 const { Kafka } = require('@confluentinc/kafka-javascript').KafkaJS;
 const { getAccessToken } = require('./token_generator.js');
-const { BOOTSTRAP_SERVERS, IDENTITY_POOL_ID, KAFKA_LOGICAL_CLUSTER_ID} = require("./config.js");
+const { BOOTSTRAP_SERVERS, IDENTITY_POOL_ID, KAFKA_LOGICAL_CLUSTER_ID, TOPIC_WITHOUT_SCHEMA} = require("./config.js");
 // ── OAuthBearer Callback ──────────────────────────────────
 async function oauthTokenRefresh() {
   console.log('Refreshing OAuth token from Entra ID...');
@@ -48,7 +48,7 @@ async function startProducer() {
       };
 
       await producer.send({
-        topic:    'test-topic',
+        topic:    TOPIC_WITHOUT_SCHEMA,
         messages: [message],
       });
 
